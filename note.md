@@ -47,6 +47,9 @@ The regex can be built using character set like this - `20[12][0123456789]` - of
 # Character set operations
 - [0-5&&[4-8]] - this is intersection of set [0-5] and [4-8] that means it represents a set S = {4,5} (Set intersection pattern)
 - [a-z&&[^aeiou]] - all lowercase letter except vowel (Set difference pattern) A−B = A ∩ B' where B' = Not B. Here we have implemented set difference using set intersection operation.
+- Union - [0-1[5-6]] is a set union which means {1,2}  U {4,6} = {1,2,3,4,5,6} https://regex101.com/r/kRjn20/1
+- Intersection - [0-3&&[2-4]] is set intersection which means {0,1,2,3} ∩ {2,3,4} = {2,3}
+- We can do all sorts of crazy nesting and all.
 
 # Modes & Flags
 - syntax => <depends on language>
@@ -156,6 +159,7 @@ If we want our reference text to come after our search result we would do this -
     - at least one special character
     - at least 8character
     - https://regex101.com/r/28FJrb/1
+    - Make it lazy to improve performance
 2. Strong Password-01
     - at least one lowercase letter
     - at least one uppercase
@@ -163,3 +167,7 @@ If we want our reference text to come after our search result we would do this -
     - no special character
     - at least 8 character
     - https://regex101.com/r/3bP7Ly/1
+    - Make it lazy to improve performance
+
+# Case sensititivity
+- (?i)cat matches both cat and Cat - (?i) - means the whole regex is case insensitive. But ((?i)cat).+?dogs this matches the first group as case insensitive and second part(.+dogs)  case sensitive. https://regex101.com/r/TugRBU/1. This is very important to tackle if only a portion of the search is case insensitive not the whole search.
